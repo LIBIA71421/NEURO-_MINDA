@@ -1,8 +1,9 @@
 const express = require('express');
-
 const vader = require('vader-sentiment');
 const cors = require('cors');
 require('dotenv').config()
+
+const { run } = require('./gemini')
 
 const app = express();
 const port = process.env.PORT || 5500;
@@ -20,21 +21,17 @@ app.post('/analyze', (req, res) => {
 
 app.get('/model_response', async (req, res) =>{    
     try {
-         //const genai = require('@google/generative-ai');
-         //genai.configure({ apiKey: process.env.API_KEY });
-         //const model = new genai.GenerativeModel('gemini-1.5-pro-latest');
-         //const response = await model.generateContent('hola como estas, quiero ayuda')
-        res.status(200).send({"g_response":req.query.text})
+        const text = req.query.text; 
+        const respGemini = await run(text);
+        res.status(200).send({"g_response": respGemini})
     } catch (error) {
         console.log(error);
         res.status(500).send("No siempre")
     }
-})
+});
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
 
-
-function gemini(textTalk){
-  }
+module.exports = app;

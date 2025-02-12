@@ -1,18 +1,19 @@
 import './style.css'
-import { setupCounter } from './counter.js'
-
+import {  handleButtonClick  } from './counter.js'
 document.querySelector('#app').innerHTML = `
   <div>
-  <h1>Análisis de Sentimiento con Vader</h1>
-  <input type="text" id="inputText" placeholder="Escribe algo aquí...">
-  <button id="sendButton" >Analizar Sentimiento</button>
-  <div id="result"></div>
+  <h1>NeuroMinda</h1>
+  <div id="messages"></div>
+  
+  <input type="text" id="inputText" placeholder="How are you...?">
+  <div id="geminiMessage"></div> <!-- Nuevo div para mostrar el mensaje de respuesta --> </div>
+  
+  <button id="sendButton" >Send</button>
   <div id="responseMessage"></div> <!-- Nuevo div para mostrar el mensaje de respuesta -->
-  <div id="geminiMessage"></div> <!-- Nuevo div para mostrar el mensaje de respuesta -->
-    <p class="read-the-docs">
-      Busca ayuda Profesional
-    </p>
-  </div>
+  
+  <p class="read-the-docs">
+    Please Let me help you here
+  </p>
 `
 
-setupCounter(document.querySelector('#sendButton'))
+handleButtonClick();

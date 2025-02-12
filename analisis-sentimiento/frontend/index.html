@@ -8,6 +8,28 @@
   </head>
   <body>
     <div id="app"></div>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script type="module">
+      import { GoogleGenerativeAI } from "@google/generative-ai";
+
+      // Fetch your API_KEY
+      const API_KEY = "AIzaSyC1bwivnVc63INxn0PLk6d8siM3R0D9kQI";
+
+      // Access your API key (see "Set up your API key" above)
+      const genAI = new GoogleGenerativeAI(API_KEY);
+
+      // ...
+
+      const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro"});
+
+      // ...
+    </script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
